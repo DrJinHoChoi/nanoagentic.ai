@@ -192,6 +192,14 @@ section { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
   font-size: 0.8125rem; color: var(--text-secondary); font-weight: 500;
 }
 .tech-spec strong { color: var(--text); }
+.tech-demo {
+  display: inline-flex; align-items: center; gap: 0.375rem;
+  margin-top: 1.25rem; padding: 0.5rem 1rem; border-radius: 8px;
+  background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+  color: var(--accent); font-size: 0.8125rem; font-weight: 600;
+  text-decoration: none; transition: border-color 0.2s, color 0.2s;
+}
+.tech-demo:hover { border-color: var(--accent); color: var(--text); }
 
 /* ─── WHY SECTION ─── */
 .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; }
@@ -378,6 +386,9 @@ footer a:hover { color: var(--text); }
         <span class="tech-spec"><strong>95.3%</strong> accuracy</span>
         <span class="tech-spec"><strong>7.3KB</strong> INT8</span>
       </div>
+      <a href="https://drjinhochoi.github.io/NC-SSM-TASLP2026/" target="_blank" class="tech-demo">
+        Live Demo <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 2h7v7M12 2 5 9"/></svg>
+      </a>
     </div>
 
     <!-- NC-SSM Vision -->
@@ -394,6 +405,9 @@ footer a:hover { color: var(--text); }
         <span class="tech-spec"><strong>+6.1%</strong> vs baseline</span>
         <span class="tech-spec"><strong>0.5W</strong> power</span>
       </div>
+      <a href="https://drjinhochoi.github.io/NC-SSM-Vision-ICCV2027/" target="_blank" class="tech-demo">
+        Live Demo <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 2h7v7M12 2 5 9"/></svg>
+      </a>
     </div>
 
     <!-- COP-RFS -->
@@ -411,6 +425,9 @@ footer a:hover { color: var(--text); }
         <span class="tech-spec"><strong>86%</strong> fewer ID switches</span>
         <span class="tech-spec"><strong>Real-time</strong> Cortex-M7</span>
       </div>
+      <a href="https://drjinhochoi.github.io/IronDome-DOA-Tracking/" target="_blank" class="tech-demo">
+        Live Demo <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 2h7v7M12 2 5 9"/></svg>
+      </a>
     </div>
   </div>
 </section>
