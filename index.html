@@ -146,7 +146,7 @@ section { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
 
 /* ─── TECH CARDS ─── */
 .tech-grid {
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3rem;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem;
 }
 .tech-card {
   background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
@@ -278,7 +278,7 @@ footer a:hover { color: var(--text); }
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 1024px) {
-  .tech-grid { grid-template-columns: repeat(2, 1fr); }
+  .tech-grid { grid-template-columns: 1fr; }
   .why-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
@@ -339,7 +339,7 @@ footer a:hover { color: var(--text); }
   </div>
   <div class="hero-stats">
     <div class="hero-stat">
-      <div class="num">4</div>
+      <div class="num">3</div>
       <div class="label">Core Technologies</div>
     </div>
     <div class="hero-stat">
@@ -396,30 +396,17 @@ footer a:hover { color: var(--text); }
       </div>
     </div>
 
-    <!-- COP -->
+    <!-- COP-RFS -->
     <div class="tech-card">
       <div class="tech-icon">
-        <svg width="28" height="28" fill="none" stroke="#fbbf24" stroke-width="2"><path d="M14 2v4m0 16v4M2 14h4m16 0h4"/><circle cx="14" cy="14" r="8"/><path d="M10 14h8m-4-4v8"/></svg>
+        <svg width="28" height="28" fill="none" stroke="#fbbf24" stroke-width="2"><circle cx="14" cy="14" r="10"/><circle cx="14" cy="14" r="6"/><circle cx="14" cy="14" r="2"/><path d="M14 2v4m0 16v4M2 14h4m16 0h4"/></svg>
       </div>
-      <span class="tech-badge">Signal Processing</span>
-      <h3>COP</h3>
-      <p>Constrained Optimization Pseudo-spectrum resolves up to 2&rho;(M&minus;1) sources from only M sensors using 4th-order cumulants — far exceeding classical MUSIC/ESPRIT limits with automatic Gaussian noise immunity.</p>
+      <span class="tech-badge">Signal Processing &amp; Defense</span>
+      <h3>COP-RFS</h3>
+      <p>Constrained Optimization Pseudo-spectrum resolves up to 2&rho;(M&minus;1) sources from M sensors via 4th-order cumulants, coupled with Random Finite Set multi-target tracking. PHD filter with velocity-gated merging achieves 86% fewer identity switches in missile defense scenarios.</p>
       <div class="tech-specs">
         <span class="tech-spec"><strong>14</strong> sources / 8 sensors</span>
         <span class="tech-spec"><strong>4th-order</strong> cumulants</span>
-        <span class="tech-spec"><strong>2&times;</strong> MUSIC capacity</span>
-      </div>
-    </div>
-
-    <!-- DOA Tracking -->
-    <div class="tech-card">
-      <div class="tech-icon">
-        <svg width="28" height="28" fill="none" stroke="#fb7185" stroke-width="2"><circle cx="14" cy="14" r="10"/><circle cx="14" cy="14" r="6"/><circle cx="14" cy="14" r="2"/><path d="M14 2v4m0 16v4M2 14h4m16 0h4"/></svg>
-      </div>
-      <span class="tech-badge">Defense AI</span>
-      <h3>DOA Tracking</h3>
-      <p>COP-RFS couples underdetermined DOA estimation with Random Finite Set multi-target tracking. PHD filter with velocity-gated merging achieves 86% fewer identity switches in missile defense scenarios.</p>
-      <div class="tech-specs">
         <span class="tech-spec"><strong>PHD</strong> filter</span>
         <span class="tech-spec"><strong>86%</strong> fewer ID switches</span>
         <span class="tech-spec"><strong>Real-time</strong> Cortex-M7</span>
