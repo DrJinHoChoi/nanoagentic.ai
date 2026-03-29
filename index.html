@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NanoAgentic AI — Ultra-Efficient AI for the Physical World</title>
+<meta name="description" content="NanoAgentic AI builds ultra-compact, noise-robust AI that runs on $5 microcontrollers. Edge AI, Signal Processing, and Autonomous Defense.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #09090b;
+  --surface: #18181b;
+  --surface-2: #1e1e22;
+  --border: #27272a;
+  --border-light: #3f3f46;
+  --text: #fafafa;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --accent: #818cf8;
+  --accent-dim: #6366f1;
+  --emerald: #10b981;
+  --cyan: #22d3ee;
+  --violet: #a78bfa;
+  --rose: #fb7185;
+  --amber: #fbbf24;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 0 2rem;
+  height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(9,9,11,0.8);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--accent), var(--cyan));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  color: var(--text-secondary); text-decoration: none; font-size: 0.875rem; font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-cta {
+  background: var(--accent-dim); color: #fff; border: none; padding: 0.5rem 1.25rem;
+  border-radius: 8px; font-size: 0.875rem; font-weight: 600; cursor: pointer;
+  transition: background 0.2s;
+}
+.nav-cta:hover { background: var(--accent); }
+.nav-menu-btn { display: none; background: none; border: none; color: var(--text); cursor: pointer; }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+  padding: 8rem 2rem 6rem; position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; top: -40%; left: 50%; transform: translateX(-50%);
+  width: 800px; height: 800px;
+  background: radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.375rem 1rem; border-radius: 100px;
+  background: var(--surface); border: 1px solid var(--border);
+  font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 2rem;
+}
+.hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--emerald); }
+h1 {
+  font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 900; letter-spacing: -0.03em;
+  line-height: 1.05; max-width: 900px;
+}
+.hero h1 span {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--violet) 40%, var(--cyan) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-sub {
+  margin-top: 1.5rem; font-size: 1.25rem; color: var(--text-secondary);
+  max-width: 600px; line-height: 1.7;
+}
+.hero-actions { margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.875rem 2rem; border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent-dim), #7c3aed);
+  color: #fff; font-weight: 600; font-size: 1rem;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 32px rgba(99,102,241,0.3); }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.875rem 2rem; border-radius: 12px;
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--text); font-weight: 600; font-size: 1rem;
+  text-decoration: none; cursor: pointer; transition: border-color 0.2s;
+}
+.btn-secondary:hover { border-color: var(--border-light); }
+.hero-stats {
+  margin-top: 4rem; display: flex; gap: 3rem; flex-wrap: wrap; justify-content: center;
+}
+.hero-stat { text-align: center; }
+.hero-stat .num {
+  font-size: 2rem; font-weight: 800; letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--accent), var(--cyan));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-stat .label { font-size: 0.8125rem; color: var(--text-muted); margin-top: 0.25rem; }
+
+/* ─── SECTIONS ─── */
+section { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
+.section-label {
+  font-size: 0.8125rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--accent); margin-bottom: 0.75rem;
+}
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.02em;
+  max-width: 700px;
+}
+.section-desc {
+  margin-top: 1rem; font-size: 1.125rem; color: var(--text-secondary);
+  max-width: 600px; line-height: 1.7;
+}
+
+/* ─── TECH CARDS ─── */
+.tech-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3rem;
+}
+.tech-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+  padding: 2rem; transition: border-color 0.3s, transform 0.3s;
+  position: relative; overflow: hidden;
+}
+.tech-card:hover { border-color: var(--border-light); transform: translateY(-2px); }
+.tech-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+}
+.tech-card:nth-child(1)::before { background: linear-gradient(90deg, var(--accent), var(--violet)); }
+.tech-card:nth-child(2)::before { background: linear-gradient(90deg, var(--emerald), var(--cyan)); }
+.tech-card:nth-child(3)::before { background: linear-gradient(90deg, var(--amber), var(--rose)); }
+.tech-card:nth-child(4)::before { background: linear-gradient(90deg, var(--rose), var(--violet)); }
+.tech-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; margin-bottom: 1.25rem;
+}
+.tech-card:nth-child(1) .tech-icon { background: rgba(129,140,248,0.1); }
+.tech-card:nth-child(2) .tech-icon { background: rgba(16,185,129,0.1); }
+.tech-card:nth-child(3) .tech-icon { background: rgba(251,191,36,0.1); }
+.tech-card:nth-child(4) .tech-icon { background: rgba(251,113,133,0.1); }
+.tech-badge {
+  display: inline-block; padding: 0.25rem 0.75rem; border-radius: 100px;
+  font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+.tech-card:nth-child(1) .tech-badge { background: rgba(129,140,248,0.15); color: var(--accent); }
+.tech-card:nth-child(2) .tech-badge { background: rgba(16,185,129,0.15); color: var(--emerald); }
+.tech-card:nth-child(3) .tech-badge { background: rgba(251,191,36,0.15); color: var(--amber); }
+.tech-card:nth-child(4) .tech-badge { background: rgba(251,113,133,0.15); color: var(--rose); }
+.tech-card h3 {
+  font-size: 1.375rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 0.5rem;
+}
+.tech-card p { color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.6; }
+.tech-specs {
+  margin-top: 1.25rem; display: flex; flex-wrap: wrap; gap: 0.75rem;
+}
+.tech-spec {
+  padding: 0.375rem 0.75rem; border-radius: 8px;
+  background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+  font-size: 0.8125rem; color: var(--text-secondary); font-weight: 500;
+}
+.tech-spec strong { color: var(--text); }
+
+/* ─── WHY SECTION ─── */
+.why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; }
+.why-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+  padding: 1.75rem; text-align: center;
+}
+.why-card .why-icon { font-size: 2rem; margin-bottom: 1rem; }
+.why-card h3 { font-size: 1.0625rem; font-weight: 700; margin-bottom: 0.5rem; }
+.why-card p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5; }
+
+/* ─── PUBLICATIONS ─── */
+.pub-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+.pub-item {
+  display: flex; align-items: center; gap: 1.5rem;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  padding: 1.25rem 1.5rem; transition: border-color 0.2s;
+}
+.pub-item:hover { border-color: var(--border-light); }
+.pub-venue {
+  flex-shrink: 0; width: 100px; text-align: center; font-weight: 700;
+  font-size: 0.8125rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em;
+}
+.pub-info h4 { font-size: 1rem; font-weight: 600; }
+.pub-info p { font-size: 0.8125rem; color: var(--text-muted); margin-top: 0.25rem; }
+.pub-status {
+  margin-left: auto; flex-shrink: 0;
+  padding: 0.25rem 0.75rem; border-radius: 100px; font-size: 0.75rem; font-weight: 600;
+}
+.status-filed { background: rgba(16,185,129,0.15); color: var(--emerald); }
+.status-submitted { background: rgba(129,140,248,0.15); color: var(--accent); }
+.status-pending { background: rgba(251,191,36,0.15); color: var(--amber); }
+
+/* ─── ABOUT ─── */
+.about-content {
+  display: flex; gap: 3rem; align-items: flex-start; margin-top: 2rem;
+}
+.about-text { flex: 1; }
+.about-text p { color: var(--text-secondary); font-size: 1rem; line-height: 1.7; margin-bottom: 1rem; }
+.about-card {
+  flex-shrink: 0; width: 320px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+  padding: 2rem; text-align: center;
+}
+.about-avatar {
+  width: 80px; height: 80px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-dim), var(--violet));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2rem; font-weight: 800; color: #fff; margin: 0 auto 1rem;
+}
+.about-card h3 { font-size: 1.25rem; font-weight: 700; }
+.about-card .about-role { color: var(--text-muted); font-size: 0.875rem; margin-top: 0.25rem; }
+.about-card .about-org { color: var(--accent); font-size: 0.875rem; font-weight: 600; margin-top: 0.5rem; }
+.about-links { margin-top: 1.25rem; display: flex; gap: 0.75rem; justify-content: center; }
+.about-link {
+  padding: 0.5rem 1rem; border-radius: 8px;
+  background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+  color: var(--text-secondary); font-size: 0.8125rem; text-decoration: none;
+  transition: border-color 0.2s;
+}
+.about-link:hover { border-color: var(--border-light); color: var(--text); }
+
+/* ─── CONTACT CTA ─── */
+.contact-cta {
+  text-align: center; padding: 6rem 2rem;
+  background: linear-gradient(180deg, transparent, rgba(99,102,241,0.05));
+}
+.contact-cta h2 {
+  font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.02em;
+}
+.contact-cta p { color: var(--text-secondary); margin-top: 1rem; font-size: 1.125rem; }
+.contact-cta .btn-primary { margin-top: 2rem; }
+
+/* ─── FOOTER ─── */
+footer {
+  border-top: 1px solid var(--border); padding: 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: 1200px; margin: 0 auto;
+  font-size: 0.8125rem; color: var(--text-muted);
+}
+footer a { color: var(--text-secondary); text-decoration: none; }
+footer a:hover { color: var(--text); }
+.footer-links { display: flex; gap: 1.5rem; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .tech-grid { grid-template-columns: repeat(2, 1fr); }
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-menu-btn { display: block; }
+  .nav-links.open {
+    display: flex; flex-direction: column;
+    position: absolute; top: 64px; left: 0; right: 0;
+    background: var(--bg); border-bottom: 1px solid var(--border);
+    padding: 1rem 2rem; gap: 1rem;
+  }
+  .tech-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr 1fr; }
+  .about-content { flex-direction: column; }
+  .about-card { width: 100%; }
+  .hero-stats { gap: 2rem; }
+  .pub-item { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  .pub-venue { width: auto; }
+  .pub-status { margin-left: 0; }
+  footer { flex-direction: column; gap: 1rem; text-align: center; }
+}
+@media (max-width: 480px) {
+  .why-grid { grid-template-columns: 1fr; }
+  .hero-stats { flex-direction: column; gap: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">NanoAgentic</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#tech">Technologies</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a href="mailto:jhchoi@nanoagentic.ai" class="nav-cta">Contact</a>
+  <button class="nav-menu-btn" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
+    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge"><span class="dot"></span> Patent Portfolio Company</div>
+  <h1>Ultra-Efficient AI for <span>the Physical World</span></h1>
+  <p class="hero-sub">We design noise-robust, ultra-compact AI architectures that deploy on $5 microcontrollers. From voice interfaces to missile defense.</p>
+  <div class="hero-actions">
+    <a href="#tech" class="btn-primary">
+      Explore Technologies
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h8m-4-4 4 4-4 4"/></svg>
+    </a>
+    <a href="#publications" class="btn-secondary">
+      Publications & Patents
+    </a>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="num">4</div>
+      <div class="label">Core Technologies</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">6+</div>
+      <div class="label">Paper Submissions</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">2</div>
+      <div class="label">Patents Filed</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">5KB</div>
+      <div class="label">Smallest Model</div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNOLOGIES -->
+<section id="tech">
+  <div class="section-label">Technology Portfolio</div>
+  <h2 class="section-title">Four pillars of noise-robust edge intelligence</h2>
+  <p class="section-desc">Each technology addresses a distinct sensing modality with a unified design principle: structural robustness without runtime overhead.</p>
+
+  <div class="tech-grid">
+    <!-- NC-SSM KWS -->
+    <div class="tech-card">
+      <div class="tech-icon">
+        <svg width="28" height="28" fill="none" stroke="#818cf8" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v4m-4 0h8"/></svg>
+      </div>
+      <span class="tech-badge">Audio AI</span>
+      <h3>NC-SSM KWS</h3>
+      <p>Noise-Conditioned State Space Model for always-on keyword spotting. Five noise-conditioning mechanisms achieve structural robustness without separate denoising — works on $5 MCUs with 7ms latency.</p>
+      <div class="tech-specs">
+        <span class="tech-spec"><strong>7,443</strong> params</span>
+        <span class="tech-spec"><strong>7.1ms</strong> latency</span>
+        <span class="tech-spec"><strong>95.3%</strong> accuracy</span>
+        <span class="tech-spec"><strong>7.3KB</strong> INT8</span>
+      </div>
+    </div>
+
+    <!-- NC-SSM Vision -->
+    <div class="tech-card">
+      <div class="tech-icon">
+        <svg width="28" height="28" fill="none" stroke="#10b981" stroke-width="2"><rect x="2" y="4" width="24" height="16" rx="2"/><path d="M8 20h12"/><circle cx="14" cy="12" r="4"/><path d="M18 8l2-2"/></svg>
+      </div>
+      <span class="tech-badge">Visual AI</span>
+      <h3>NC-SSM Vision</h3>
+      <p>NC-Conv extends noise-conditioning to vision. A learned quality gate blends dynamic and static convolution paths — enabling robust lane detection through fog, rain, tunnels, and low-light on an $8 MCU.</p>
+      <div class="tech-specs">
+        <span class="tech-spec"><strong>253K</strong> params</span>
+        <span class="tech-spec"><strong>28</strong> FPS</span>
+        <span class="tech-spec"><strong>+6.1%</strong> vs baseline</span>
+        <span class="tech-spec"><strong>0.5W</strong> power</span>
+      </div>
+    </div>
+
+    <!-- COP -->
+    <div class="tech-card">
+      <div class="tech-icon">
+        <svg width="28" height="28" fill="none" stroke="#fbbf24" stroke-width="2"><path d="M14 2v4m0 16v4M2 14h4m16 0h4"/><circle cx="14" cy="14" r="8"/><path d="M10 14h8m-4-4v8"/></svg>
+      </div>
+      <span class="tech-badge">Signal Processing</span>
+      <h3>COP</h3>
+      <p>Constrained Optimization Pseudo-spectrum resolves up to 2&rho;(M&minus;1) sources from only M sensors using 4th-order cumulants — far exceeding classical MUSIC/ESPRIT limits with automatic Gaussian noise immunity.</p>
+      <div class="tech-specs">
+        <span class="tech-spec"><strong>14</strong> sources / 8 sensors</span>
+        <span class="tech-spec"><strong>4th-order</strong> cumulants</span>
+        <span class="tech-spec"><strong>2&times;</strong> MUSIC capacity</span>
+      </div>
+    </div>
+
+    <!-- DOA Tracking -->
+    <div class="tech-card">
+      <div class="tech-icon">
+        <svg width="28" height="28" fill="none" stroke="#fb7185" stroke-width="2"><circle cx="14" cy="14" r="10"/><circle cx="14" cy="14" r="6"/><circle cx="14" cy="14" r="2"/><path d="M14 2v4m0 16v4M2 14h4m16 0h4"/></svg>
+      </div>
+      <span class="tech-badge">Defense AI</span>
+      <h3>DOA Tracking</h3>
+      <p>COP-RFS couples underdetermined DOA estimation with Random Finite Set multi-target tracking. PHD filter with velocity-gated merging achieves 86% fewer identity switches in missile defense scenarios.</p>
+      <div class="tech-specs">
+        <span class="tech-spec"><strong>PHD</strong> filter</span>
+        <span class="tech-spec"><strong>86%</strong> fewer ID switches</span>
+        <span class="tech-spec"><strong>Real-time</strong> Cortex-M7</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="section-label">Why NanoAgentic</div>
+  <h2 class="section-title">Engineered for constraints, not the cloud</h2>
+
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">
+        <svg width="32" height="32" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="6" y="6" width="20" height="20" rx="2"/><path d="M10 16h12m-6-6v12"/></svg>
+      </div>
+      <h3>Ultra-Compact</h3>
+      <p>5KB to 20KB INT8 models. Fits in on-chip SRAM — no external memory needed.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">
+        <svg width="32" height="32" fill="none" stroke="var(--emerald)" stroke-width="2"><path d="M4 16c0-6.6 5.4-12 12-12s12 5.4 12 12"/><path d="M16 8v8l4 4"/></svg>
+      </div>
+      <h3>Edge-Native</h3>
+      <p>Deploys on $5 ARM Cortex-M MCUs. No cloud, no latency, no recurring cost.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">
+        <svg width="32" height="32" fill="none" stroke="var(--amber)" stroke-width="2"><path d="M16 4v4m8 0-2.8 2.8M28 16h-4M24 24l-2.8-2.8M16 28v-4M8 24l2.8-2.8M4 16h4M8 8l2.8 2.8"/></svg>
+      </div>
+      <h3>Noise-Robust</h3>
+      <p>Structural robustness baked into the architecture. No denoising module required.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">
+        <svg width="32" height="32" fill="none" stroke="var(--rose)" stroke-width="2"><path d="M16 4l2.4 7.2H26l-6 4.4 2.4 7.2L16 18.4l-6.4 4.4 2.4-7.2-6-4.4h7.6Z"/></svg>
+      </div>
+      <h3>IP-Protected</h3>
+      <p>Patent portfolio filed (KR + US). PCT international filing in progress.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="section-label">Publications & IP</div>
+  <h2 class="section-title">Peer-reviewed research and patent filings</h2>
+
+  <div class="pub-list">
+    <div class="pub-item">
+      <div class="pub-venue">Interspeech<br>2026</div>
+      <div class="pub-info">
+        <h4>Per-Sub-Band Selectivity Modulation: Bridging SSM Adaptivity and CNN Noise Immunity for Keyword Spotting</h4>
+        <p>Selectivity modulation framework for noise-robust keyword spotting</p>
+      </div>
+      <span class="pub-status status-submitted">Submitted</span>
+    </div>
+    <div class="pub-item">
+      <div class="pub-venue">IEEE/ACM<br>TASLP 2026</div>
+      <div class="pub-info">
+        <h4>NC-SSM: Noise-Conditioned State Space Models for Robust and Efficient Keyword Spotting</h4>
+        <p>Noise-conditioned SSM architecture with formal robustness analysis</p>
+      </div>
+      <span class="pub-status status-submitted">Submitted</span>
+    </div>
+    <div class="pub-item">
+      <div class="pub-venue">IEEE<br>TSP 2026</div>
+      <div class="pub-info">
+        <h4>Underdetermined High-Resolution DOA Estimation and Multi-Target Tracking via COP-RFS</h4>
+        <p>2&rho;(M&minus;1) source resolution coupled with PHD multi-target tracking</p>
+      </div>
+      <span class="pub-status status-submitted">Submitted</span>
+    </div>
+    <div class="pub-item">
+      <div class="pub-venue">ACCV<br>2026</div>
+      <div class="pub-info">
+        <h4>NC-Conv: Noise-Conditioned Dual-Path Convolution for Degradation-Robust Vision</h4>
+        <p>Quality-gated dynamic/static path blending for adverse-condition vision</p>
+      </div>
+      <span class="pub-status status-submitted">Submitted</span>
+    </div>
+    <div class="pub-item">
+      <div class="pub-venue">KR Patent</div>
+      <div class="pub-info">
+        <h4>Ultra-Lightweight SSM AI Inference Method and Apparatus</h4>
+        <p>5 independent claims + 20 dependent claims covering audio, vision, and sensor modalities</p>
+      </div>
+      <span class="pub-status status-filed">Filed</span>
+    </div>
+    <div class="pub-item">
+      <div class="pub-venue">US Patent</div>
+      <div class="pub-info">
+        <h4>PCT International Filing &rarr; US National Phase Entry</h4>
+        <p>Covering NC-SSM, DualPCEN, selectivity modulation, and hardware accelerator specs</p>
+      </div>
+      <span class="pub-status status-pending">Pending</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About</div>
+  <h2 class="section-title">Built by a researcher, for real-world deployment</h2>
+
+  <div class="about-content">
+    <div class="about-text">
+      <p>NanoAgentic AI is an IP-driven research company focused on building the smallest, most robust AI models for edge deployment. Our work spans audio intelligence, computer vision, signal processing, and defense applications.</p>
+      <p>Every architecture we design follows a single principle: <strong>structural robustness without runtime overhead</strong>. Rather than bolting on denoising modules or augmentation hacks, we engineer noise immunity directly into the model's computation graph.</p>
+      <p>Our technologies are protected by a growing patent portfolio and validated through peer-reviewed publications at top-tier venues including IEEE, Interspeech, and ACCV.</p>
+    </div>
+    <div class="about-card">
+      <div class="about-avatar">JC</div>
+      <h3>Jin Ho Choi</h3>
+      <div class="about-role">Founder & Chief Scientist</div>
+      <div class="about-org">NanoAgentic AI</div>
+      <div class="about-links">
+        <a href="mailto:jhchoi@nanoagentic.ai" class="about-link">Email</a>
+        <a href="#" class="about-link">GitHub</a>
+        <a href="#" class="about-link">Scholar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT CTA -->
+<div class="contact-cta">
+  <h2>Ready to deploy AI at the edge?</h2>
+  <p>We license our technologies for commercial deployment. Let's talk.</p>
+  <a href="mailto:jhchoi@nanoagentic.ai" class="btn-primary">
+    Get in Touch
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h8m-4-4 4 4-4 4"/></svg>
+  </a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>&copy; 2026 NanoAgentic AI. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="#tech">Technologies</a>
+    <a href="#publications">Publications</a>
+    <a href="mailto:jhchoi@nanoagentic.ai">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>
