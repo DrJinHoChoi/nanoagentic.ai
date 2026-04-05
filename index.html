@@ -146,7 +146,7 @@ section { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
 
 /* ─── TECH CARDS ─── */
 .tech-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem;
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3rem;
 }
 .tech-card {
   background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
@@ -289,6 +289,9 @@ footer a:hover { color: var(--text); }
   .tech-grid { grid-template-columns: 1fr; }
   .why-grid { grid-template-columns: repeat(2, 1fr); }
 }
+@media (min-width: 1025px) {
+  .tech-grid { grid-template-columns: repeat(2, 1fr); }
+}
 @media (max-width: 768px) {
   .nav-links { display: none; }
   .nav-menu-btn { display: block; }
@@ -347,11 +350,11 @@ footer a:hover { color: var(--text); }
   </div>
   <div class="hero-stats">
     <div class="hero-stat">
-      <div class="num">3</div>
+      <div class="num">4</div>
       <div class="label">Core Technologies</div>
     </div>
     <div class="hero-stat">
-      <div class="num">6+</div>
+      <div class="num">7+</div>
       <div class="label">Paper Submissions</div>
     </div>
     <div class="hero-stat">
@@ -368,7 +371,7 @@ footer a:hover { color: var(--text); }
 <!-- TECHNOLOGIES -->
 <section id="tech">
   <div class="section-label">Technology Portfolio</div>
-  <h2 class="section-title">Three pillars of noise-robust edge intelligence</h2>
+  <h2 class="section-title">Four pillars of noise-robust edge intelligence</h2>
   <p class="section-desc">Each technology addresses a distinct sensing modality with a unified design principle: structural robustness without runtime overhead.</p>
 
   <div class="tech-grid">
@@ -427,6 +430,26 @@ footer a:hover { color: var(--text); }
       </div>
       <a href="https://drjinhochoi.github.io/IronDome-DOA-Tracking/" target="_blank" class="tech-demo">
         Live Demo <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 2h7v7M12 2 5 9"/></svg>
+      </a>
+    </div>
+
+    <!-- NC-SLU -->
+    <div class="tech-card">
+      <div class="tech-icon">
+        <svg width="28" height="28" fill="none" stroke="#fb7185" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v2"/><rect x="6" y="22" width="16" height="4" rx="1"/><path d="M10 22v-1m4 1v-1m4 1v-1"/></svg>
+      </div>
+      <span class="tech-badge">Spoken Language Understanding</span>
+      <h3>NC-SLU</h3>
+      <p>First sub-100K parameter end-to-end spoken language understanding with few-shot intent addition. NC-OPAL two-stage incremental learning (prototype imprinting + LoRA + KD) adds new voice commands from just 20 examples &mdash; 23&times; smaller than SpeechCache.</p>
+      <div class="tech-specs">
+        <span class="tech-spec"><strong>21,689</strong> params</span>
+        <span class="tech-spec"><strong>31</strong> intents</span>
+        <span class="tech-spec"><strong>20-shot</strong> adaptation</span>
+        <span class="tech-spec"><strong>85KB</strong> FP32</span>
+        <span class="tech-spec"><strong>3-way</strong> backbone comparison</span>
+      </div>
+      <a href="https://github.com/DrJinHoChoi/NC-KWS-FineTuning" target="_blank" class="tech-demo">
+        GitHub <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 2h7v7M12 2 5 9"/></svg>
       </a>
     </div>
   </div>
@@ -498,6 +521,14 @@ footer a:hover { color: var(--text); }
         <p>2&rho;(M&minus;1) source resolution coupled with PHD multi-target tracking</p>
       </div>
       <span class="pub-status status-submitted">Submitted</span>
+    </div>
+    <div class="pub-item">
+      <div class="pub-venue">EMNLP<br>2026</div>
+      <div class="pub-info">
+        <h4>NC-SLU: On-Device Spoken Language Understanding in Sub-100K Parameters with Few-Shot Intent Addition</h4>
+        <p>First sub-100K SLU with NC-OPAL incremental learning &mdash; 3-way backbone comparison (NC-TCN / NC-TCN-Bi / NC-SSM) on Fluent Speech Commands</p>
+      </div>
+      <span class="pub-status status-pending">In Prep</span>
     </div>
     <div class="pub-item">
       <div class="pub-venue">ACCV<br>2026</div>
